@@ -1,11 +1,16 @@
 'use client';
 
-export default function Modal() {
+export default function Modal({setOpen}) {
 
   return (
-
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className='bg-[#FFFFFF] w-[505px]'> 
+ <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      onClick={() => setOpen(false)} // 👈 tashqariga bosilganda yopiladi
+    >
+      <div
+        className="bg-[#FFFFFF] w-[505px]"
+        onClick={(e) => e.stopPropagation()} // 👈 ichiga bosilganda yopilmaydi
+      >
             <div className='w-[384px] m-auto'>
 
 <h2 className='font-medium mb-[39px] text-2xl leading-[1.25] mt-[65px] tracking-normal text-center '>Bron qilish</h2>

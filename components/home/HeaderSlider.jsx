@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Autoplay, Navigation } from 'swiper/modules'
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 import Image from 'next/image'
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
@@ -35,7 +35,7 @@ const slides = [
 ]
 
 export default function HeaderSlider() {
-  
+  const[open,setOpen]=useState(false)
   return (
     <div className="relative max-w-7xl mx-auto px-3 max-sm:mb-[77px] mb-[121px] sm:px-0">
       <Swiper modules={[Autoplay, Navigation]} slidesPerView={1} speed={1500} loop
@@ -85,6 +85,7 @@ export default function HeaderSlider() {
                 </p>
               </motion.div>
               <motion.button
+              onClick={()=>setOpen(true)}
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="absolute bottom-4 sm:bottom-6 right-4 sm:right-6 z-20
@@ -116,7 +117,7 @@ export default function HeaderSlider() {
         <AiOutlineRight size={22} className="sm:size-[28px] text-gray-800" />
       </button>
       {
-        <Modal/>
+        open&&<Modal setOpen={setOpen}/>
       }
     </div>
   )

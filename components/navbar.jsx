@@ -39,7 +39,6 @@ export default function Navbar() {
         </span>
       </div>
 
-      {/* Asosiy navbar */}
       <div className="bg-[#1A2031] p-[20px]">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
           <Image
@@ -54,8 +53,6 @@ export default function Navbar() {
           <div className="hidden sm:flex gap-[32px] items-center relative">
             <a href="#">Biz haqimizda</a>
             <a href="#">Mehmonxonalar</a>
-            
-            {/* Dropdown */}
             <div className="relative">
               <motion.div
                 onClick={() => setOpen1(!open1)}
