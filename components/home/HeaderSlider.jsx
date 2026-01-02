@@ -9,6 +9,7 @@ import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
+import Modal from '../modal'
 
 const slides = [
   {
@@ -34,8 +35,9 @@ const slides = [
 ]
 
 export default function HeaderSlider() {
+  
   return (
-    <div className="relative max-w-7xl mx-auto px-3 sm:px-0">
+    <div className="relative max-w-7xl mx-auto px-3 max-sm:mb-[77px] mb-[121px] sm:px-0">
       <Swiper modules={[Autoplay, Navigation]} slidesPerView={1} speed={1500} loop
         autoplay={{
           delay: 7000,
@@ -113,6 +115,9 @@ export default function HeaderSlider() {
                          hover:bg-white hover:scale-110">
         <AiOutlineRight size={22} className="sm:size-[28px] text-gray-800" />
       </button>
+      {
+        <Modal/>
+      }
     </div>
   )
 }

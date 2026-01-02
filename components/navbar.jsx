@@ -1,19 +1,22 @@
 'use client'
+
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { AiOutlinePhone } from 'react-icons/ai'
-import { HiOutlineLocationMarker } from "react-icons/hi"
+import { HiMenuAlt1, HiOutlineLocationMarker } from "react-icons/hi"
 import { MdOutlineEmail } from "react-icons/md"
 import { IoIosArrowDown } from "react-icons/io"
 import { FaRoute } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion"
+import MobileMenu from './MobileMenu'
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false)        // Mobil menu uchun
+  const [open1, setOpen1] = useState(false)      // Desktop dropdown uchun
 
   return (
-    <div className="mb-[66px]">
-      <div className="flex justify-center gap-[32px]">
+    <div className="mb-[66px] max-sm:mb-[22px]">
+      <div className="hidden sm:flex justify-center gap-[32px mb-[12px]">
         <span className="flex gap-[12px] items-center">
           <HiOutlineLocationMarker size={24} />
           <h2 className="text-[14px] text-[#00000099]">
@@ -35,29 +38,34 @@ export default function Navbar() {
           </h2>
         </span>
       </div>
-      <div className="bg-[#1A2031] mt-[11px] p-[20px]">
-        <div className="max-w-7xl m-auto flex justify-between items-center text-white">
 
+      {/* Asosiy navbar */}
+      <div className="bg-[#1A2031] p-[20px]">
+        <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
           <Image
             src="/icon/navbaricon.svg"
             width={237}
             height={52}
             alt="logo"
+            className="max-sm:w-[134px] max-sm:h-[29px]"
           />
-          <div className="flex gap-[32px] items-center relative">
+
+          {/* Desktop menu */}
+          <div className="hidden sm:flex gap-[32px] items-center relative">
             <a href="#">Biz haqimizda</a>
             <a href="#">Mehmonxonalar</a>
-
+            
+            {/* Dropdown */}
             <div className="relative">
               <motion.div
-                onClick={() => setOpen(!open)}
+                onClick={() => setOpen1(!open1)}
                 className="flex items-center gap-2 cursor-pointer select-none"
                 whileTap={{ scale: 0.95 }}
               >
                 <FaRoute size={18} />
                 <span>Turizm turlari</span>
                 <motion.div
-                  animate={{ rotate: open ? 180 : 0 }}
+                  animate={{ rotate: open1 ? 180 : 0 }}
                   transition={{ duration: 0.3 }}
                 >
                   <IoIosArrowDown />
@@ -65,23 +73,16 @@ export default function Navbar() {
               </motion.div>
 
               <AnimatePresence>
-                {open && (
+                {open1 && (
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.25 }}
-                    className="absolute top-full mt-3 bg-white text-black rounded-xl z-10 shadow-xl w-[200px] overflow-hidden"
+                    className="absolute top-full mt-3 left-0 bg-white text-black rounded-xl shadow-xl w-[200px] overflow-hidden z-20"
                   >
-                    <a className="block px-4 py-3 hover:bg-gray-100">
-                      Ichki turizm
-                    </a>
-                    <a className="block px-4 py-3 hover:bg-gray-100">
-                      Tashqi turizm
-                    </a>
-                    <a className="block px-4 py-3 hover:bg-gray-100">
-                      Ziyorat turlari
-                    </a>
+                    <a href="#" className="block px-4 py-3 hover:bg-gray-100">Ichki turizm</a>
+                    <a href="#" className="block px-4 py-3 hover:bg-gray-100">Tashqi turizm</a>
+                    <a href="#" className="block px-4 py-3 hover:bg-gray-100">Ziyorat turlari</a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -90,14 +91,25 @@ export default function Navbar() {
             <a href="#">Xizmatlar</a>
             <a href="#">Bog‘lanish</a>
 
-            {/* LANGUAGE */}
             <span className="flex gap-2 items-center cursor-pointer">
               <Image src="/icon/uzbicon.svg" width={24} height={24} alt="uz" />
               <span>UZB</span>
             </span>
           </div>
+
+          {/* Mobil menu trigger */}
+          <button
+            onClick={() => setOpen(true)}
+            className="sm:hidden text-4xl"
+            aria-label="Menu ochish"
+          >
+            <HiMenuAlt1 />
+          </button>
         </div>
       </div>
+
+      {/* Mobil menu */}
+      <MobileMenu open={open} setOpen={setOpen} />
     </div>
   )
 }
