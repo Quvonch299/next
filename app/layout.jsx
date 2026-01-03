@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar";
 import "./globals.css";
 import Footer from "@/components/footer";
-
+import "@/i18n";
 
 
 export const metadata = {

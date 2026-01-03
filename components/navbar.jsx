@@ -9,14 +9,17 @@ import { IoIosArrowDown } from "react-icons/io"
 import { FaRoute } from "react-icons/fa"
 import { motion, AnimatePresence } from "framer-motion"
 import MobileMenu from './MobileMenu'
+import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)        // Mobil menu uchun
   const [open1, setOpen1] = useState(false)      // Desktop dropdown uchun
+  const { t, i18n } = useTranslation()
 
   return (
     <div className="mb-[66px] max-sm:mb-[22px]">
-      <div className="hidden sm:flex justify-center gap-[32px mb-[12px]">
+      <div className="hidden sm:flex justify-center gap-[32px] mb-[12px]">
         <span className="flex gap-[12px] items-center">
           <HiOutlineLocationMarker size={24} />
           <h2 className="text-[14px] text-[#00000099]">
@@ -41,18 +44,19 @@ export default function Navbar() {
 
       <div className="bg-[#1A2031] p-[20px]">
         <div className="max-w-7xl mx-auto flex justify-between items-center text-white">
+          <Link href={'/'}>
+
           <Image
             src="/icon/navbaricon.svg"
             width={237}
             height={52}
             alt="logo"
             className="max-sm:w-[134px] max-sm:h-[29px]"
-          />
-
-          {/* Desktop menu */}
+            />
+            </Link>
           <div className="hidden sm:flex gap-[32px] items-center relative">
-            <a href="#">Biz haqimizda</a>
-            <a href="#">Mehmonxonalar</a>
+            <Link href={'/about'}>Biz haqimizda</Link>
+            <Link href={"/hotel"}>Mehmonxonalar</Link>
             <div className="relative">
               <motion.div
                 onClick={() => setOpen1(!open1)}
@@ -77,7 +81,7 @@ export default function Navbar() {
                     exit={{ opacity: 0, y: -10 }}
                     className="absolute top-full mt-3 left-0 bg-white text-black rounded-xl shadow-xl w-[200px] overflow-hidden z-20"
                   >
-                    <a href="#" className="block px-4 py-3 hover:bg-gray-100">Ichki turizm</a>
+                    <Link href={'/turizim'} className="block px-4 py-3 hover:bg-gray-100">Ichki turizm</Link>
                     <a href="#" className="block px-4 py-3 hover:bg-gray-100">Tashqi turizm</a>
                     <a href="#" className="block px-4 py-3 hover:bg-gray-100">Ziyorat turlari</a>
                   </motion.div>
@@ -85,7 +89,7 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
 
-            <a href="#">Xizmatlar</a>
+            <Link href={'/server'}>Xizmatlar</Link>
             <a href="#">Bog‘lanish</a>
 
             <span className="flex gap-2 items-center cursor-pointer">
@@ -94,7 +98,6 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Mobil menu trigger */}
           <button
             onClick={() => setOpen(true)}
             className="sm:hidden text-4xl"
@@ -104,8 +107,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
-      {/* Mobil menu */}
       <MobileMenu open={open} setOpen={setOpen} />
     </div>
   )

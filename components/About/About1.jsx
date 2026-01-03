@@ -2,10 +2,10 @@ import React from 'react'
 
 export default function About1() {
   return (
-    <div className='max-w-[952px] m-auto'>
-        <h2 className='font-bold text-[50px] leading-[100%] tracking-[0%]  capitalize text-[#14183E]'>Biz haqimizda</h2>
+    <div className='max-w-[952px] m-auto px-3  sm:px-0'>
+        <h2 className='font-bold text-[50px] leading-[100%] tracking-[0%]  capitalize text-[#14183E] max-sm:text-[32px]'>Biz haqimizda</h2>
         <div>
-            <p className='mt-[11px] font-medium text-base leading-6 tracking-normal'>O`zbekiston fuqarolari uchun viza xizmatlari<br/><br/><br/>
+            <p className='mt-[11px] font-medium text-base leading-6 tracking-normal max-sm:text-[14px]'>O`zbekiston fuqarolari uchun viza xizmatlari<br/><br/><br/>
 
 Mamlakatlar o`rtasidagi viza rejimi xalqaro munosabatlar va sayohatlarning muhim jihati hisoblanadi. O‘zbekiston<br/>
 fuqarolari uchun ham, boshqa davlat fuqarolari uchun ham xorijiy davlatlarga borish uchun viza olishning ma’lum<br/>
