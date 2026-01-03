@@ -10,7 +10,7 @@ export default function MobileMenu({ open, setOpen }) {
     { label: 'Mehmonxonalar', href: '/hotel', icon: Hotel },
     { label: 'Turizm turlari', href: '/turizim', icon: Globe },
     { label: 'Xizmatlar', href: '/server', icon: Package },
-    { label: 'Bog‘lanish', href: '/contact', icon: Phone },
+    { label: 'Bog‘lanish', href: '/cantact', icon: Phone },
   ]
 
   const menuVariants = {

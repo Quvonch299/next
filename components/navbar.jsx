@@ -90,7 +90,7 @@ export default function Navbar() {
             </div>
 
             <Link href={'/server'}>Xizmatlar</Link>
-            <a href="#">Bog‘lanish</a>
+            <Link href={'/cantact'}>Bog‘lanish</Link>
 
             <span className="flex gap-2 items-center cursor-pointer">
               <Image src="/icon/uzbicon.svg" width={24} height={24} alt="uz" />
